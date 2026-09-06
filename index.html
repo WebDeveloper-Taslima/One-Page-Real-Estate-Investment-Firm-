@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple Double Real Estate | Investment, Operation & Management</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0B192C',
+                            dark: '#070F1B',
+                            slate: '#1E293B',
+                            gold: '#C5A880',
+                            goldHover: '#B29367',
+                            lightGold: '#F4EFEA',
+                            sand: '#F9F8F6',
+                            muted: '#64748B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome CDN for Crisp Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(11, 25, 44, 0.75) 0%, rgba(7, 15, 27, 0.90) 100%);
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 25px -5px rgba(197, 168, 128, 0.25);
+        }
+        .preview-frame-mobile {
+            max-width: 390px !important;
+            margin: 0 auto;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border: 12px solid #1e293b;
+            overflow-x: hidden;
+        }
+        .preview-frame-tablet {
+            max-width: 768px !important;
+            margin: 0 auto;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            border: 10px solid #1e293b;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans antialiased selection:bg-brand-gold selection:text-brand-dark transition-all duration-300">
+
+    <!-- TOP CONTEST CONTROL TOOLBAR (For Contest Evaluation) -->
+    <div id="contestToolbar" class="bg-slate-900 border-b border-slate-800 text-xs py-2.5 px-4 sticky top-0 z-50 flex flex-wrap justify-between items-center gap-3">
+        <div class="flex items-center gap-3">
+            <span class="bg-brand-gold/20 text-brand-gold font-semibold px-2.5 py-1 rounded flex items-center gap-1.5 border border-brand-gold/30">
+                <i class="fa-solid fa-trophy"></i> Contest Showcase Mode
+            </span>
+            <span class="text-slate-400 hidden sm:inline">Triple Double RE Homepage Concept</span>
+        </div>
+        
+        <!-- Viewport Switcher Controls -->
+        <div class="flex items-center gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800">
+            <button onclick="setViewport('desktop')" id="btnDesktop" class="px-3 py-1 rounded text-white bg-brand-gold/80 font-medium transition flex items-center gap-1.5">
+                <i class="fa-solid fa-desktop"></i> Desktop View
+            </button>
+            <button onclick="setViewport('tablet')" id="btnTablet" class="px-3 py-1 rounded text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                <i class="fa-solid fa-tablet-screen-button"></i> Tablet (768px)
+            </button>
+            <button onclick="setViewport('mobile')" id="btnMobile" class="px-3 py-1 rounded text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                <i class="fa-solid fa-mobile-screen-button"></i> Mobile (390px)
+            </button>
+        </div>
+
+        <!-- Submission Kit Modal Trigger -->
+        <button onclick="toggleModal('submissionKitModal')" class="bg-brand-gold hover:bg-brand-goldHover text-brand-dark font-bold px-3.5 py-1.5 rounded transition flex items-center gap-1.5 shadow-md">
+            <i class="fa-solid fa-folder-open"></i> Contest Submission Kit
+        </button>
+    </div>
+
+    <!-- MAIN WRAPPER FOR RESPONSIVE PREVIEW -->
+    <div id="appContainer" class="w-full transition-all duration-500">
+
+        <!-- HEADER & NAVIGATION -->
+        <header class="sticky top-[45px] z-40 bg-brand-navy/90 backdrop-blur-md border-b border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20">
+                    
+                    <!-- LOGO EMBLEM -->
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="w-10 h-10 border border-brand-gold flex items-center justify-center bg-brand-dark group-hover:border-white transition-colors duration-300">
+                            <span class="font-serif font-bold text-brand-gold text-xl tracking-wider group-hover:text-white">TD</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif font-bold text-lg tracking-widest uppercase text-white leading-tight">Triple Double</span>
+                            <span class="text-[10px] tracking-[0.25em] text-brand-gold uppercase font-semibold">Real Estate</span>
+                        </div>
+                    </a>
+
+                    <!-- MAIN DESKTOP NAV -->
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a href="#about" class="text-sm tracking-widest uppercase text-slate-300 hover:text-brand-gold transition duration-200">About</a>
+                        <a href="#expertise" class="text-sm tracking-widest uppercase text-slate-300 hover:text-brand-gold transition duration-200">Expertise</a>
+                        <a href="#portfolio" class="text-sm tracking-widest uppercase text-slate-300 hover:text-brand-gold transition duration-200">Portfolio</a>
+                        <a href="#stats" class="text-sm tracking-widest uppercase text-slate-300 hover:text-brand-gold transition duration-200">Track Record</a>
+                        <a href="#leadership" class="text-sm tracking-widest uppercase text-slate-300 hover:text-brand-gold transition duration-200">Leadership</a>
+                        <a href="#press" class="text-sm tracking-widest uppercase text-slate-300 hover:text-brand-gold transition duration-200">News</a>
+                    </nav>
+
+                    <!-- HEADER ACTIONS -->
+                    <div class="flex items-center gap-4">
+                        <a href="#contact" class="hidden sm:inline-flex items-center justify-center border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-dark font-medium text-xs tracking-widest uppercase px-5 py-2.5 transition duration-300">
+                            Investor Portal
+                        </a>
+                        <button onclick="toggleMobileNav()" class="md:hidden text-slate-300 hover:text-white p-2">
+                            <i class="fa-solid fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOBILE NAV DRAWER -->
+            <div id="mobileNav" class="hidden md:hidden bg-brand-navy border-b border-slate-800 px-6 py-6 space-y-4">
+                <a href="#about" onclick="toggleMobileNav()" class="block text-sm tracking-widest uppercase text-slate-200 hover:text-brand-gold">About</a>
+                <a href="#expertise" onclick="toggleMobileNav()" class="block text-sm tracking-widest uppercase text-slate-200 hover:text-brand-gold">Expertise</a>
+                <a href="#portfolio" onclick="toggleMobileNav()" class="block text-sm tracking-widest uppercase text-slate-200 hover:text-brand-gold">Portfolio</a>
+                <a href="#stats" onclick="toggleMobileNav()" class="block text-sm tracking-widest uppercase text-slate-200 hover:text-brand-gold">Track Record</a>
+                <a href="#leadership" onclick="toggleMobileNav()" class="block text-sm tracking-widest uppercase text-slate-200 hover:text-brand-gold">Leadership</a>
+                <a href="#contact" onclick="toggleMobileNav()" class="inline-block border border-brand-gold text-brand-gold px-4 py-2 text-xs uppercase">Investor Portal</a>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-brand-dark">
+            <!-- Background Image with Overlay & Fail-safe Fallback -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
+                     referrerpolicy="no-referrer"
+                     onerror="this.onerror=null; this.src='https://picsum.photos/id/1031/1920/1080';" 
+                     alt="Modern High-Rise Architecture" 
+                     class="w-full h-full object-cover object-center scale-105 filter brightness-75">
+                <div class="absolute inset-0 hero-gradient"></div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+                <div class="inline-flex items-center gap-2 border border-brand-gold/40 bg-brand-dark/70 backdrop-blur-md px-4 py-1.5 rounded-full mb-8">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+                    <span class="text-xs uppercase tracking-[0.2em] text-brand-gold font-medium">Institutional Real Estate Firm</span>
+                </div>
+
+                <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-white max-w-5xl mx-auto leading-tight mb-8">
+                    Pioneering Capital. <br class="hidden sm:inline">
+                    <span class="italic font-normal text-brand-gold">Elevating Assets</span> Across Prime Markets.
+                </h1>
+
+                <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-10">
+                    Triple Double Real Estate is a premier investment, operations, and management company. We optimize value across commercial, residential, and mixed-use portfolios through disciplined capital deployment.
+                </p>
+
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <a href="#portfolio" class="bg-brand-gold hover:bg-brand-goldHover text-brand-dark font-semibold text-xs tracking-widest uppercase px-8 py-4 transition duration-300 shadow-lg flex items-center gap-2">
+                        Explore Portfolio <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="#expertise" class="border border-slate-600 hover:border-brand-gold text-slate-200 hover:text-white font-medium text-xs tracking-widest uppercase px-8 py-4 bg-brand-dark/40 backdrop-blur-sm transition duration-300">
+                        Our Strategy
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-center">
+                <a href="#stats" class="text-slate-400 hover:text-brand-gold transition duration-300 flex flex-col items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest">Scroll</span>
+                    <i class="fa-solid fa-chevron-down animate-bounce text-xs"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- KEY STATS & TRACK RECORD SECTION -->
+        <section id="stats" class="bg-brand-navy border-y border-slate-800 py-16 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-x-0 sm:divide-x divide-slate-800">
+                    
+                    <div class="p-4">
+                        <div class="font-serif text-4xl sm:text-5xl font-bold text-brand-gold mb-2">$1.8B+</div>
+                        <div class="text-xs uppercase tracking-widest text-slate-400">Total Transaction Volume</div>
+                    </div>
+
+                    <div class="p-4">
+                        <div class="font-serif text-4xl sm:text-5xl font-bold text-white mb-2">12.5M+</div>
+                        <div class="text-xs uppercase tracking-widest text-slate-400">Sq. Ft. Managed & Leased</div>
+                    </div>
+
+                    <div class="p-4">
+                        <div class="font-serif text-4xl sm:text-5xl font-bold text-brand-gold mb-2">25+ Years</div>
+                        <div class="text-xs uppercase tracking-widest text-slate-400">Institutional Track Record</div>
+                    </div>
+
+                    <div class="p-4">
+                        <div class="font-serif text-4xl sm:text-5xl font-bold text-white mb-2">98.4%</div>
+                        <div class="text-xs uppercase tracking-widest text-slate-400">Average Portfolio Occupancy</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT & CORPORATE PHILOSOPHY SECTION -->
+        <section id="about" class="py-24 bg-brand-dark relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Left Copy -->
+                    <div>
+                        <div class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-4">Corporate Philosophy</div>
+                        <h2 class="font-serif text-3xl sm:text-5xl font-light text-white leading-tight mb-6">
+                            Thinking Out of the Box, <br>
+                            <span class="italic text-brand-gold">Executing with Institutional Precision.</span>
+                        </h2>
+                        <p class="text-slate-300 leading-relaxed font-light mb-6">
+                            At Triple Double Real Estate, we bridge the gap between creative investment structuring and rigorous operational management. With over two decades of market leadership, our multi-faceted platform identifies undervalued opportunities across high-barrier urban markets.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed font-light mb-8">
+                            Whether deploying capital into value-add acquisitions, structuring strategic commercial leases, or providing hands-on asset supervision, our aligned incentives ensure long-term value generation for institutional partners and tenants alike.
+                        </p>
+
+                        <!-- 3 Core Pillars -->
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 bg-brand-navy/60 border border-slate-800 rounded">
+                                <div class="w-8 h-8 rounded bg-brand-gold/10 text-brand-gold flex items-center justify-center flex-shrink-0 font-serif font-bold">1</div>
+                                <div>
+                                    <h4 class="font-semibold text-white text-sm mb-1">Agile Capital Underwriting</h4>
+                                    <p class="text-xs text-slate-400 leading-normal">Rapid decision-making supported by deep regional market intelligence and proprietary valuation models.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 bg-brand-navy/60 border border-slate-800 rounded">
+                                <div class="w-8 h-8 rounded bg-brand-gold/10 text-brand-gold flex items-center justify-center flex-shrink-0 font-serif font-bold">2</div>
+                                <div>
+                                    <h4 class="font-semibold text-white text-sm mb-1">Active Asset Optimization</h4>
+                                    <p class="text-xs text-slate-400 leading-normal">Hands-on leasing, tenant relationship management, and capital expenditure programs that boost yield.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 bg-brand-navy/60 border border-slate-800 rounded">
+                                <div class="w-8 h-8 rounded bg-brand-gold/10 text-brand-gold flex items-center justify-center flex-shrink-0 font-serif font-bold">3</div>
+                                <div>
+                                    <h4 class="font-semibold text-white text-sm mb-1">ESG & Sustainable Operations</h4>
+                                    <p class="text-xs text-slate-400 leading-normal">Integrating green building standards and modern tech infrastructure into every property portfolio.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Architectural Image Stack -->
+                    <div class="relative">
+                        <div class="relative z-10 border border-slate-700 overflow-hidden shadow-2xl bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.onerror=null; this.src='https://picsum.photos/id/1076/800/1000';" 
+                                 alt="Luxury Real Estate Exterior" 
+                                 class="w-full h-[500px] object-cover hover:scale-105 transition duration-700">
+                        </div>
+                        <div class="absolute -bottom-8 -left-8 z-20 w-64 bg-brand-navy border border-brand-gold/40 p-6 hidden sm:block shadow-xl">
+                            <i class="fa-solid fa-quote-left text-brand-gold text-2xl mb-2"></i>
+                            <p class="font-serif italic text-sm text-slate-200">"Creating resilient real estate value requires more than capital—it requires operational mastery."</p>
+                            <span class="block text-[10px] uppercase tracking-widest text-brand-gold mt-3 font-semibold">— Executive Board</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE EXPERTISE / SERVICES SECTION -->
+        <section id="expertise" class="py-24 bg-brand-navy border-t border-slate-800 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Operating Platforms</div>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-light text-white">Full-Lifecycle Real Estate Capabilities</h2>
+                    <p class="text-slate-400 text-sm mt-4 font-light">From acquisition underwriting to leasing execution and asset liquidation, our specialized divisions deliver end-to-end management.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Investment -->
+                    <div class="bg-brand-dark p-8 border border-slate-800 hover:border-brand-gold/60 transition duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-brand-navy border border-slate-700 group-hover:border-brand-gold text-brand-gold flex items-center justify-center text-2xl mb-8 transition-colors">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-brand-gold transition-colors">Real Estate Investment</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6 font-light">
+                                Strategic acquisition of commercial, multi-family, and industrial assets. We structure opportunistic, value-add equity and debt transactions designed to deliver risk-adjusted superior returns.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-[10px]"></i> Value-Add Acquisitions</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-[10px]"></i> Joint Venture Capitalization</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-[10px]"></i> Capital Structuring</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 2: Leasing -->
+                    <div class="bg-brand-dark p-8 border border-slate-800 hover:border-brand-gold/60 transition duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-brand-navy border border-slate-700 group-hover:border-brand-gold text-brand-gold flex items-center justify-center text-2xl mb-8 transition-colors">
+                                <i class="fa-solid fa-building-user"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-brand-gold transition-colors">Leasing & Advisory</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6 font-light">
+                                Aggressive tenant acquisition strategies and market positioning. Our leasing division secures high-credit corporate and retail tenants to maximize Net Operating Income (NOI).
+                            </p>
+                        </div>
+                        <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-[10px]"></i> Corporate Tenant Curation</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-[10px]"></i> Market Rate Optimization</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-[10px]"></i> Lease Agreement Structuring</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 3: Management -->
+                    <div class="bg-brand-dark p-8 border border-slate-800 hover:border-brand-gold/60 transition duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-brand-navy border border-slate-700 group-hover:border-brand-gold text-brand-gold flex items-center justify-center text-2xl mb-8 transition-colors">
+                                <i class="fa-solid fa-city"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-brand-gold transition-colors">Asset Management</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6 font-light">
+                                Comprehensive operational oversight, preventative maintenance, capital improvements, and financial reporting ensuring asset preservation and valuation growth.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-[10px]"></i> Full Operational Supervision</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-[10px]"></i> CapEx & Renovation Control</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-[10px]"></i> Financial Compliance & Audits</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SIGNATURE PORTFOLIO SHOWCASE SECTION -->
+        <section id="portfolio" class="py-24 bg-brand-dark relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <div class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Portfolio Highlights</div>
+                        <h2 class="font-serif text-3xl sm:text-5xl font-light text-white">Representative Assets</h2>
+                    </div>
+
+                    <!-- Portfolio Category Filter Tabs -->
+                    <div class="flex flex-wrap items-center gap-2 bg-brand-navy p-1.5 border border-slate-800 rounded">
+                        <button onclick="filterPortfolio('all')" id="tabAll" class="px-4 py-2 rounded text-xs uppercase tracking-wider font-semibold bg-brand-gold text-brand-dark transition">All</button>
+                        <button onclick="filterPortfolio('commercial')" id="tabCommercial" class="px-4 py-2 rounded text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white transition">Commercial</button>
+                        <button onclick="filterPortfolio('residential')" id="tabResidential" class="px-4 py-2 rounded text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white transition">Residential</button>
+                        <button onclick="filterPortfolio('mixed')" id="tabMixed" class="px-4 py-2 rounded text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white transition">Mixed-Use</button>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIO GRID -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Item 1: Commercial -->
+                    <div class="portfolio-item commercial bg-brand-navy border border-slate-800 overflow-hidden group hover:border-brand-gold/50 transition duration-500">
+                        <div class="relative h-64 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=1000&auto=format&fit=crop" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.onerror=null; this.src='https://picsum.photos/id/1029/600/400';" 
+                                 alt="Financial District Tower" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <div class="absolute top-4 left-4 bg-brand-dark/80 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest text-brand-gold border border-brand-gold/30">Commercial Office</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-xs text-slate-400 mb-1">New York, NY</div>
+                            <h3 class="font-serif text-2xl text-white mb-2 group-hover:text-brand-gold transition-colors">The Financial Center Tower</h3>
+                            <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-800/80 pt-4 mt-4">
+                                <span>450,000 Sq. Ft.</span>
+                                <span class="text-brand-gold font-semibold">$215M Acquisition</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Luxury Residential -->
+                    <div class="portfolio-item residential bg-brand-navy border border-slate-800 overflow-hidden group hover:border-brand-gold/50 transition duration-500">
+                        <div class="relative h-64 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.onerror=null; this.src='https://picsum.photos/id/1040/600/400';" 
+                                 alt="Waterfront Condominium" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <div class="absolute top-4 left-4 bg-brand-dark/80 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest text-brand-gold border border-brand-gold/30">Luxury Residential</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-xs text-slate-400 mb-1">Miami, FL</div>
+                            <h3 class="font-serif text-2xl text-white mb-2 group-hover:text-brand-gold transition-colors">Bayfront Residences & Marina</h3>
+                            <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-800/80 pt-4 mt-4">
+                                <span>180 Condominium Units</span>
+                                <span class="text-brand-gold font-semibold">$140M Value Add</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Mixed-Use -->
+                    <div class="portfolio-item mixed bg-brand-navy border border-slate-800 overflow-hidden group hover:border-brand-gold/50 transition duration-500">
+                        <div class="relative h-64 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=1000&auto=format&fit=crop" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.onerror=null; this.src='https://picsum.photos/id/1048/600/400';" 
+                                 alt="Urban Mixed Use Complex" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <div class="absolute top-4 left-4 bg-brand-dark/80 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest text-brand-gold border border-brand-gold/30">Mixed-Use Development</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-xs text-slate-400 mb-1">Chicago, IL</div>
+                            <h3 class="font-serif text-2xl text-white mb-2 group-hover:text-brand-gold transition-colors">Avenue Plaza & Retail Hub</h3>
+                            <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-800/80 pt-4 mt-4">
+                                <span>320,000 Sq. Ft. Mixed</span>
+                                <span class="text-brand-gold font-semibold">$185M Development</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Commercial -->
+                    <div class="portfolio-item commercial bg-brand-navy border border-slate-800 overflow-hidden group hover:border-brand-gold/50 transition duration-500">
+                        <div class="relative h-64 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.onerror=null; this.src='https://picsum.photos/id/1069/600/400';" 
+                                 alt="Tech Campus HQ" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <div class="absolute top-4 left-4 bg-brand-dark/80 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest text-brand-gold border border-brand-gold/30">Commercial Tech HQ</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-xs text-slate-400 mb-1">Austin, TX</div>
+                            <h3 class="font-serif text-2xl text-white mb-2 group-hover:text-brand-gold transition-colors">Silicon Hills Commerce Center</h3>
+                            <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-800/80 pt-4 mt-4">
+                                <span>510,000 Sq. Ft. Office</span>
+                                <span class="text-brand-gold font-semibold">$290M Asset</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Residential -->
+                    <div class="portfolio-item residential bg-brand-navy border border-slate-800 overflow-hidden group hover:border-brand-gold/50 transition duration-500">
+                        <div class="relative h-64 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.onerror=null; this.src='https://picsum.photos/id/1074/600/400';" 
+                                 alt="Modern Apartments" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <div class="absolute top-4 left-4 bg-brand-dark/80 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest text-brand-gold border border-brand-gold/30">Multi-Family Luxury</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-xs text-slate-400 mb-1">Los Angeles, CA</div>
+                            <h3 class="font-serif text-2xl text-white mb-2 group-hover:text-brand-gold transition-colors">The Wilshire Heights</h3>
+                            <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-800/80 pt-4 mt-4">
+                                <span>240 Apartment Units</span>
+                                <span class="text-brand-gold font-semibold">$165M Portfolio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Mixed-Use -->
+                    <div class="portfolio-item mixed bg-brand-navy border border-slate-800 overflow-hidden group hover:border-brand-gold/50 transition duration-500">
+                        <div class="relative h-64 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.onerror=null; this.src='https://picsum.photos/id/1031/600/400';" 
+                                 alt="Downtown High-Rise" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <div class="absolute top-4 left-4 bg-brand-dark/80 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest text-brand-gold border border-brand-gold/30">Mixed-Use Tower</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-xs text-slate-400 mb-1">Boston, MA</div>
+                            <h3 class="font-serif text-2xl text-white mb-2 group-hover:text-brand-gold transition-colors">Seaport Innovation Tower</h3>
+                            <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-800/80 pt-4 mt-4">
+                                <span>600,000 Sq. Ft. Total</span>
+                                <span class="text-brand-gold font-semibold">$340M Development</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EXECUTIVE LEADERSHIP TEAM SECTION -->
+        <section id="leadership" class="py-24 bg-brand-navy border-t border-slate-800 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Executive Board</div>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-light text-white">Leadership & Governance</h2>
+                    <p class="text-slate-400 text-sm mt-4 font-light">Guiding strategic direction with over 100 years of combined institutional real estate investment and operational experience.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Executive 1 -->
+                    <div class="bg-brand-dark border border-slate-800 p-6 group hover:border-brand-gold/50 transition">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" 
+                             referrerpolicy="no-referrer"
+                             onerror="this.onerror=null; this.src='https://picsum.photos/id/1005/400/500';" 
+                             alt="Anthony Vance" 
+                             class="w-full h-72 object-cover object-top mb-6 border border-slate-800 filter grayscale group-hover:grayscale-0 transition duration-500">
+                        <div class="text-xs uppercase tracking-widest text-brand-gold font-semibold mb-1">Chief Executive Officer</div>
+                        <h3 class="font-serif text-2xl text-white">Anthony Vance</h3>
+                        <p class="text-xs text-slate-400 mt-2 font-light leading-relaxed">Former Head of Real Estate Acquisitions at global equity fund with $3B+ executed transactions.</p>
+                    </div>
+
+                    <!-- Executive 2 -->
+                    <div class="bg-brand-dark border border-slate-800 p-6 group hover:border-brand-gold/50 transition">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" 
+                             referrerpolicy="no-referrer"
+                             onerror="this.onerror=null; this.src='https://picsum.photos/id/1027/400/500';" 
+                             alt="Elena Rostova" 
+                             class="w-full h-72 object-cover object-top mb-6 border border-slate-800 filter grayscale group-hover:grayscale-0 transition duration-500">
+                        <div class="text-xs uppercase tracking-widest text-brand-gold font-semibold mb-1">Chief Investment Officer</div>
+                        <h3 class="font-serif text-2xl text-white">Elena Rostova</h3>
+                        <p class="text-xs text-slate-400 mt-2 font-light leading-relaxed">20+ years expertise in capital markets underwriting, direct acquisitions, and structured portfolio financing.</p>
+                    </div>
+
+                    <!-- Executive 3 -->
+                    <div class="bg-brand-dark border border-slate-800 p-6 group hover:border-brand-gold/50 transition">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop" 
+                             referrerpolicy="no-referrer"
+                             onerror="this.onerror=null; this.src='https://picsum.photos/id/1012/400/500';" 
+                             alt="Marcus Sterling" 
+                             class="w-full h-72 object-cover object-top mb-6 border border-slate-800 filter grayscale group-hover:grayscale-0 transition duration-500">
+                        <div class="text-xs uppercase tracking-widest text-brand-gold font-semibold mb-1">Head of Operations & Leasing</div>
+                        <h3 class="font-serif text-2xl text-white">Marcus Sterling</h3>
+                        <p class="text-xs text-slate-400 mt-2 font-light leading-relaxed">Oversees nationwide asset management, corporate tenant relations, and portfolio performance metrics.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PRESS & MARKET INSIGHTS SECTION -->
+        <section id="press" class="py-24 bg-brand-dark relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <div class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">News & Media</div>
+                        <h2 class="font-serif text-3xl sm:text-5xl font-light text-white">Market Insights & Announcements</h2>
+                    </div>
+                    <a href="#" class="text-brand-gold hover:text-white text-xs uppercase tracking-widest font-semibold flex items-center gap-2">
+                        View All Press Releases <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <article class="bg-brand-navy border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-slate-400">September 2026 • Press Release</span>
+                            <h3 class="font-serif text-xl text-white mt-2 mb-3">Triple Double Completes $185M Acquisition of Prime Commercial Tower in Downtown Corridor</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed font-light">The value-add transaction expands the firm's commercial footprint in high-growth metropolitan markets...</p>
+                        </div>
+                        <a href="#" class="inline-block mt-6 text-xs text-brand-gold font-semibold hover:underline">Read Full Release →</a>
+                    </article>
+
+                    <article class="bg-brand-navy border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-slate-400">August 2026 • Market Research</span>
+                            <h3 class="font-serif text-xl text-white mt-2 mb-3">2026 Institutional Real Estate Report: Capital Migration & Tenant Demand Trends</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed font-light">An in-depth analysis of commercial leasing velocity and submarket yield strategies across major US hubs...</p>
+                        </div>
+                        <a href="#" class="inline-block mt-6 text-xs text-brand-gold font-semibold hover:underline">Download Whitepaper →</a>
+                    </article>
+
+                    <article class="bg-brand-navy border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-slate-400">July 2026 • ESG Initiative</span>
+                            <h3 class="font-serif text-xl text-white mt-2 mb-3">Portfolio-Wide Decarbonization Plan Achieves LEED Gold Standards Across 4.5M Sq. Ft.</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed font-light">Triple Double continues its commitment to sustainable building operations and energy efficiency upgrades...</p>
+                        </div>
+                        <a href="#" class="inline-block mt-6 text-xs text-brand-gold font-semibold hover:underline">Read Case Study →</a>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INSTITUTIONAL FOOTER -->
+        <footer id="contact" class="bg-brand-dark border-t border-slate-800 pt-16 pb-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+                    
+                    <!-- Col 1: Brand -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 border border-brand-gold flex items-center justify-center bg-brand-navy">
+                                <span class="font-serif font-bold text-brand-gold text-lg">TD</span>
+                            </div>
+                            <span class="font-serif font-bold text-lg tracking-widest uppercase text-white">Triple Double Real Estate</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed max-w-sm font-light">
+                            Triple Double Real Estate is a nationwide real estate investment, operation, and management firm specializing in high-yielding commercial, multi-family, and mixed-use assets.
+                        </p>
+                        <div class="flex items-center gap-4 text-slate-400 text-sm">
+                            <a href="#" class="hover:text-brand-gold transition"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="#" class="hover:text-brand-gold transition"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" class="hover:text-brand-gold transition"><i class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Col 2: Navigation -->
+                    <div>
+                        <h4 class="text-xs uppercase tracking-[0.2em] text-brand-gold font-semibold mb-4">Platform</h4>
+                        <ul class="space-y-2.5 text-xs text-slate-400">
+                            <li><a href="#about" class="hover:text-white transition">About Firm</a></li>
+                            <li><a href="#expertise" class="hover:text-white transition">Investment Strategy</a></li>
+                            <li><a href="#portfolio" class="hover:text-white transition">Asset Portfolio</a></li>
+                            <li><a href="#stats" class="hover:text-white transition">Track Record</a></li>
+                            <li><a href="#leadership" class="hover:text-white transition">Leadership</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 3: Offices -->
+                    <div>
+                        <h4 class="text-xs uppercase tracking-[0.2em] text-brand-gold font-semibold mb-4">Offices</h4>
+                        <ul class="space-y-2.5 text-xs text-slate-400">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-location-dot text-brand-gold text-[10px] mt-1"></i>
+                                <span><strong>New York</strong>: 590 Madison Ave, NY 10022</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-location-dot text-brand-gold text-[10px] mt-1"></i>
+                                <span><strong>Miami</strong>: 1450 Brickell Ave, FL 33131</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-location-dot text-brand-gold text-[10px] mt-1"></i>
+                                <span><strong>Chicago</strong>: 110 N Wacker Dr, IL 60606</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 4: Investor Portal -->
+                    <div>
+                        <h4 class="text-xs uppercase tracking-[0.2em] text-brand-gold font-semibold mb-4">Investor Contact</h4>
+                        <p class="text-xs text-slate-400 mb-4 font-light">For partnership inquiries & LP capital allocation:</p>
+                        <a href="mailto:invest@tripledoublere.com" class="text-xs text-brand-gold font-semibold block hover:underline mb-2">invest@tripledoublere.com</a>
+                        <span class="text-xs text-slate-400 block">+1 (800) 555-3873</span>
+                    </div>
+
+                </div>
+
+                <div class="border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+                    <p>© 2026 Triple Double Real Estate LLC. All rights reserved.</p>
+                    <div class="flex gap-6">
+                        <a href="#" class="hover:text-slate-200">Privacy Policy</a>
+                        <a href="#" class="hover:text-slate-200">Terms of Investment</a>
+                        <a href="#" class="hover:text-slate-200">Disclosures</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- CONTEST SUBMISSION KIT MODAL (Contains exact text & specs for Freelancer.com submission) -->
+    <div id="submissionKitModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-brand-navy border border-brand-gold/60 max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-lg shadow-2xl relative text-slate-200">
+            
+            <button onclick="toggleModal('submissionKitModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-4 mb-6">
+                <div class="w-10 h-10 rounded bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif text-2xl text-white font-bold">Contest Submission Kit</h3>
+                    <p class="text-xs text-slate-400">Copy these specs & text directly into your Freelancer.com submission form.</p>
+                </div>
+            </div>
+
+            <!-- SECTION 1: WRITTEN DESIGN APPROACH -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="text-xs uppercase tracking-widest text-brand-gold font-bold">1. Written Design Approach (2-3 Sentences)</h4>
+                    <button onclick="copyToClipboard('writtenApproachText')" class="text-xs bg-slate-800 hover:bg-slate-700 text-brand-gold px-2.5 py-1 rounded border border-slate-700">
+                        <i class="fa-regular fa-copy"></i> Copy Text
+                    </button>
+                </div>
+                <div id="writtenApproachText" class="bg-brand-dark p-4 border border-slate-800 rounded text-xs leading-relaxed text-slate-300 font-serif italic">
+                    "Our design concept for Triple Double Real Estate establishes an authoritative institutional presence by pairing refined serif typography (Cormorant Garamond) with an expansive dark navy (#0B192C) and champagne gold (#C5A880) color palette. The homepage layout prioritizes structural visual hierarchy through an impactful hero header, data-dense track record metrics, and an interactive portfolio gallery that mirrors top-tier institutional firms like Crescent Heights and Related Group. Designed desktop-first with seamless mobile responsiveness, every component communicates operational strength, trust, and premium real estate investment expertise."
+                </div>
+            </div>
+
+            <!-- SECTION 2: COLOR PALETTE SPECIFICATIONS -->
+            <div class="mb-8">
+                <h4 class="text-xs uppercase tracking-widest text-brand-gold font-bold mb-3">2. Defined Color Palette</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="p-3 bg-brand-dark border border-slate-800 rounded text-center">
+                        <div class="w-full h-8 bg-[#0B192C] rounded mb-2 border border-slate-700"></div>
+                        <span class="block text-[11px] font-bold text-white">Deep Navy</span>
+                        <span class="text-[10px] text-slate-400">#0B192C (Primary)</span>
+                    </div>
+                    <div class="p-3 bg-brand-dark border border-slate-800 rounded text-center">
+                        <div class="w-full h-8 bg-[#C5A880] rounded mb-2"></div>
+                        <span class="block text-[11px] font-bold text-white">Champagne Gold</span>
+                        <span class="text-[10px] text-slate-400">#C5A880 (Accent)</span>
+                    </div>
+                    <div class="p-3 bg-brand-dark border border-slate-800 rounded text-center">
+                        <div class="w-full h-8 bg-[#070F1B] rounded mb-2 border border-slate-700"></div>
+                        <span class="block text-[11px] font-bold text-white">Obsidian Dark</span>
+                        <span class="text-[10px] text-slate-400">#070F1B (Background)</span>
+                    </div>
+                    <div class="p-3 bg-brand-dark border border-slate-800 rounded text-center">
+                        <div class="w-full h-8 bg-[#F9F8F6] rounded mb-2"></div>
+                        <span class="block text-[11px] font-bold text-white">Sand White</span>
+                        <span class="text-[10px] text-slate-400">#F9F8F6 (Light Text)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: TYPOGRAPHY SPECS -->
+            <div class="mb-8">
+                <h4 class="text-xs uppercase tracking-widest text-brand-gold font-bold mb-3">3. Defined Typography System</h4>
+                <div class="bg-brand-dark p-4 border border-slate-800 rounded space-y-3 text-xs">
+                    <div class="flex justify-between border-b border-slate-800 pb-2">
+                        <span class="text-slate-400">Primary Heading Font:</span>
+                        <span class="font-serif font-bold text-white text-sm">Cormorant Garamond (Serif)</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800 pb-2">
+                        <span class="text-slate-400">Body & Interface Font:</span>
+                        <span class="font-sans font-semibold text-white">Plus Jakarta Sans (Sans-Serif)</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-400">Font Hierarchy:</span>
+                        <span class="text-slate-300">H1: 64px Light | H2: 48px Light | H3: 24px Regular | Body: 14px/16px</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: BUTTON & UI STYLES -->
+            <div>
+                <h4 class="text-xs uppercase tracking-widest text-brand-gold font-bold mb-3">4. Button & UI Component Styles</h4>
+                <div class="flex flex-wrap gap-4 items-center p-4 bg-brand-dark border border-slate-800 rounded">
+                    <button class="bg-brand-gold text-brand-dark font-semibold text-xs uppercase px-5 py-2.5">Primary Solid</button>
+                    <button class="border border-brand-gold text-brand-gold text-xs uppercase px-5 py-2.5">Secondary Outline</button>
+                    <button class="border border-slate-700 text-slate-300 text-xs uppercase px-5 py-2.5">Ghost Glass</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY & VIEWPORT TOGGLING -->
+    <script>
+        // Viewport Switcher Function
+        function setViewport(mode) {
+            const container = document.getElementById('appContainer');
+            const btnDesktop = document.getElementById('btnDesktop');
+            const btnTablet = document.getElementById('btnTablet');
+            const btnMobile = document.getElementById('btnMobile');
+
+            // Reset buttons
+            [btnDesktop, btnTablet, btnMobile].forEach(btn => {
+                btn.className = "px-3 py-1 rounded text-slate-400 hover:text-white transition flex items-center gap-1.5";
+            });
+
+            // Reset container class
+            container.className = "w-full transition-all duration-500";
+
+            if (mode === 'desktop') {
+                btnDesktop.className = "px-3 py-1 rounded text-white bg-brand-gold/80 font-medium transition flex items-center gap-1.5";
+            } else if (mode === 'tablet') {
+                btnTablet.className = "px-3 py-1 rounded text-white bg-brand-gold/80 font-medium transition flex items-center gap-1.5";
+                container.className = "preview-frame-tablet transition-all duration-500 my-8";
+            } else if (mode === 'mobile') {
+                btnMobile.className = "px-3 py-1 rounded text-white bg-brand-gold/80 font-medium transition flex items-center gap-1.5";
+                container.className = "preview-frame-mobile transition-all duration-500 my-8";
+            }
+        }
+
+        // Modal Toggle
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.toggle('hidden');
+        }
+
+        // Mobile Nav Toggle
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('hidden');
+        }
+
+        // Portfolio Filter Tabs
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const tabs = ['tabAll', 'tabCommercial', 'tabResidential', 'tabMixed'];
+            
+            tabs.forEach(t => {
+                const btn = document.getElementById(t);
+                btn.className = "px-4 py-2 rounded text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white transition";
+            });
+
+            const activeTab = document.getElementById('tab' + category.charAt(0).toUpperCase() + category.slice(1));
+            if(activeTab) {
+                activeTab.className = "px-4 py-2 rounded text-xs uppercase tracking-wider font-semibold bg-brand-gold text-brand-dark transition";
+            }
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Copy Text Helper
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied Written Design Approach to clipboard!');
+            });
+        }
+    </script>
+
+</body>
+</html>
